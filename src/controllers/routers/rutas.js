@@ -1,14 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const userController = require('../../controllers/crear');  
-
+const userController = require('../crear'); 
+const { modificarUsuario } = require('../editar');
+const { listarUsuarios } = require('../listar');
 
 // Ruta para crear un nuevo usuario
 router.post('/api/crear', userController.createUser);
+router.put('/api/modificar/:id', modificarUsuario);
+router.get('/api/listar', listarUsuarios);
 
-// Ruta de prueba para verificar que el servidor está funcionando
-router.get('/', (req, res) => {
-  res.send('Hello World');
-});
+
+
 
 module.exports = router;
